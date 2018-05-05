@@ -19,6 +19,7 @@
   "homepage": "https://github.com/celsooliveiraTBDE/complete-weather-app#readme",
   "dependencies": {
     "inquirer": "^5.2.0",
+    "moment": "^2.22.1",
     "require": "^2.4.20",
     "weather-js": "^2.0.0"
   }
