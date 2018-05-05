@@ -1,4 +1,6 @@
-var inquirer = require ("inquirer")
+var inquirer = require ("inquirer");
+var fs = require("fs");
+var textFile = "log.txt"
 
 //create a constructor function for input 
 function User (name, location) {
@@ -9,11 +11,11 @@ function User (name, location) {
 //inquire prompts for the user 
 inquirer.prompt([
     {
-        name: "name",
+        name: "Name",
         message: "Name: "
     },
     {
-        name: "location",
+        name: "Location",
         message: "Location: "
     },
     ]).then(function(input){
@@ -24,3 +26,12 @@ inquirer.prompt([
         console.log(JSON.stringify(newUser));
     }
  );
+
+ fs.append(textFile, input, function(err){
+     if (err){
+         console.log(err);
+     }
+     else {
+         console.log("User Logged");
+     }
+ })
