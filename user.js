@@ -1,4 +1,5 @@
 var inquirer = require ("inquirer");
+var weather = require ("weather-js");
 var fs = require("fs");
 var textFile = "log.txt"
 
@@ -6,6 +7,16 @@ var textFile = "log.txt"
 function User (name, location) {
     this.name = name;
     this.location = location; 
+    this.date = Date.now();
+
+    this.getWeather = function() {
+        weather.find({search: this.location, degreeType: "F"}, function(err, result) {
+            if(err) {
+                console.log(err);
+            }
+            console.log(JSON.stringify(result, null, 2));
+        })
+    }
 }
 
 //inquire prompts for the user 
@@ -26,12 +37,17 @@ inquirer.prompt([
         console.log(JSON.stringify(newUser));
     }
  );
+//  moment(newUser.date).format("")
 
  fs.append(textFile, input, function(err){
      if (err){
          console.log(err);
      }
      else {
-         console.log("User Logged");
+        console.log("User Logged");
      }
  })
+
+ module.exports = {
+
+ }
