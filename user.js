@@ -20,23 +20,24 @@ function User (name, location) {
 }
 
 //inquire prompts for the user 
-inquirer.prompt([
-    {
-        name: "Name",
-        message: "Name: "
-    },
-    {
-        name: "Location",
-        message: "Location: "
-    },
+var userPrompt = function() {
+    inquirer.prompt([
+        {
+            name: "Name",
+            message: "Name: "
+        },
+        {
+            name: "Location",
+            message: "Location: "
+        },
     ]).then(function(input){
         var newUser = new User(
             input.name,
             input.location
         ); 
-        console.log(JSON.stringify(newUser));
-    }
- );
+            console.log(JSON.stringify(newUser));
+    });
+}
 //  moment(newUser.date).format("")
 
  fs.append(textFile, input, function(err){
