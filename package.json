@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/celsooliveiraTBDE/complete-weather-app/issues"
   },
-  "homepage": "https://github.com/celsooliveiraTBDE/complete-weather-app#readme"
+  "homepage": "https://github.com/celsooliveiraTBDE/complete-weather-app#readme",
+  "dependencies": {
+    "inquirer": "^5.2.0",
+    "require": "^2.4.20",
+    "weather-js": "^2.0.0"
+  }
 }
