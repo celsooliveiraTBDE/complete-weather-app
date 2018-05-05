@@ -3,6 +3,8 @@ var weather = require ("weather-js");
 var fs = require("fs");
 var textFile = "log.txt"
 
+
+
 //create a constructor function for input 
 function User (name, location) {
     this.name = name;
@@ -20,27 +22,27 @@ function User (name, location) {
 }
 
 //inquire prompts for the user 
-var userPrompt = function() {
-    inquirer.prompt([
-        {
-            name: "Name",
-            message: "Name: "
-        },
-        {
-            name: "Location",
-            message: "Location: "
-        },
-    ]).then(function(input){
-        var newUser = new User(
-            input.name,
-            input.location
-        ); 
-            console.log(JSON.stringify(newUser));
-    });
-}
-//  moment(newUser.date).format("")
+inquirer.prompt([
+    {
+        name: "name",
+        message: "Name: "
+    },
+    {
+        name: "location",
+        message: "Location: "
+    },
+]).then(function(input){
+    var newUser = new User(
+        input.name,
+        input.location
+    );
+    console.log("New User:", newUser);
+})   
 
- fs.append(textFile, input, function(err){
+
+// Breaks here due to recursion
+var appInput = "\nName: " + input.name + "\nLocation: " + input.location;
+ fs.append(textFile, appInput , function(err){
      if (err){
          console.log(err);
      }
@@ -49,6 +51,6 @@ var userPrompt = function() {
      }
  })
 
- module.exports = {
+//  module.exports = {
 
- }
+//  }
